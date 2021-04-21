@@ -1,2 +1,3 @@
-# aws-demo
-AWS demonstrations repository
+# AWS Demonstrations
+
+Simple demonstrations related to using using AWS.

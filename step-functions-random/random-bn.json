@@ -1,0 +1,29 @@
+{
+  "Comment": "Microservice Retry",
+  "StartAt": "state.start.random",
+  "States": {
+    "state.start.random": {
+      "Type": "Task",
+      "Comment": "Call Random Microservice",
+      "Resource" : "arn:aws:lambda:ap-southeast-2:180814441145:function:random",
+      "Retry": [
+          { "ErrorEquals": [ "States.ALL" ], "MaxAttempts": 10, "IntervalSeconds": 2, "BackoffRate": 1 }
+      ],
+      "Next": "state.start.secret"
+    },
+     "state.start.secret": {
+      "Type": "Task",
+      "Comment": "Obtain credentials from secrets manager",
+      "Resource" : "arn:aws:lambda:ap-southeast-2:180814441145:function:seekret",
+      "Next": "state.process.displayResult"
+    },
+    "state.process.displayResult": {
+      "Type": "Pass",
+      "Next": "state.process.complete"
+    },
+    "state.process.complete": {
+      "Type": "Pass",
+      "End": true
+    }
+  }
+}
