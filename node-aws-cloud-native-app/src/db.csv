@@ -1,0 +1,4 @@
+"PriKey (S)","Brand (S)","Image-URL (S)","RRP (N)","SKU (S)"
+"1","Tesla","http://s3-cna.s3-website-ap-southeast-2.amazonaws.com/images/model-3-side-profile.png","45000","Model 3"
+"2","Tesla","http://s3-cna.s3-website-ap-southeast-2.amazonaws.com/images/model-s-side-profile.png","250000","Model S P100D"
+"3","Tesla","http://s3-cna.s3-website-ap-southeast-2.amazonaws.com/images/model-x-side-profile.png","260000","Model X P100D"

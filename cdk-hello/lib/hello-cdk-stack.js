@@ -2,6 +2,7 @@ const cdk = require('@aws-cdk/core')
 const sqs = require('@aws-cdk/aws-sqs')
 const lambda = require('@aws-cdk/aws-lambda')
 const eventSources = require('@aws-cdk/aws-lambda-event-sources')
+const { Duration } = require('@aws-cdk/core')
 
 class HelloCdkStack extends cdk.Stack {
   /**
@@ -14,7 +15,9 @@ class HelloCdkStack extends cdk.Stack {
     super(scope, id, props)
 
     // The code that defines your stack goes here
-    const queue = new sqs.Queue(this, 'HelloQueue')
+    const queue = new sqs.Queue(this, 'HelloQueue', {
+      visibilityTimeout: Duration.seconds(300)
+    })
 
     const fn = new lambda.Function(this, 'HelloFunction', {
       code: new lambda.AssetCode('lambda'),
